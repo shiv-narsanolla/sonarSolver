@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>My Application</title>
+    <link rel="stylesheet"href="./css/sonarStyle.css">
+    <script>
+
+        // getElementById
+        function $id(id) {
+            return document.getElementById(id);
+        }
+
+        //
+        // output information
+        function Output(msg) {
+            var m = $id("messages");
+            m.innerHTML = msg + m.innerHTML;
+        }
+
+        //
+        // initialize
+        function Init() {
+
+            var fileselect = $id("file"),
+                    filedrag = $id("dropFile"),
+                    submitbutton = $id("submitbutton");
+
+            // file select
+            fileselect.addEventListener("change", FileSelectHandler, false);
+
+            // is XHR2 available?
+            var xhr = new XMLHttpRequest();
+            if (xhr.upload) {
+
+                // file drop
+                filedrag.addEventListener("dragover", FileDragHover, false);
+                filedrag.addEventListener("dragleave", FileDragHover, false);
+                filedrag.addEventListener("drop", FileSelectHandler, false);
+                filedrag.style.display = "block";
+
+                // remove submit button
+//                    submitbutton.style.display = "none";
+            }
+
+        }
+
+        // file drag hover
+        function FileDragHover(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            e.target.className = (e.type == "dragover" ? "hover" : "");
+//                alert(e.target.className)
+            var files = e.target.files || e.dataTransfer.files;
+
+            // process all File objects
+            for (var i = 0, f; f = files[i]; i++) {
+                ParseFile(f);
+            }
+        }
+
+        // file selection
+        function FileSelectHandler(e) {
+            // cancel event and hover styling
+            FileDragHover(e);
+
+            // fetch FileList object
+            var files = e.target.files || e.dataTransfer.files;
+
+            // process all File objects
+            for (var i = 0, f; f = files[i]; i++) {
+                ParseFile(f);
+            }
+
+        }
+
+        function ParseFile(file) {
+
+            Output(
+                    "<p>File information: <strong>" + file.name +
+                            "</strong> type: <strong>" + file.type +
+                            "</strong> size: <strong>" + file.size +
+                            "</strong> bytes</p>"
+            );
+
+        }
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+//                alert('drop here')
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var fileName = document.getElementById("dropFile").files[0].name;
+            alert("file name is "+fileName)
+//                var data = ev.dataTransfer.getData("text");
+//                ev.target.appendChild(document.getElementById(data));
+        }
+
+        function acceptFile(){
+            if(document.getElementById("file").files[0]){
+                var fileName = document.getElementById("file").files[0].name;
+                alert('file name is '+fileName)
+            }else{
+                alert("please upload a file")
+            }
+        }
+    </script>
+</head>
+<body onload="Init()">
+<header>
+    <img src="./lib/images/sonar-banner.jpg" alt="Smiley face" width="100%" height="60">
+</header>
+
+<div class="col-6 frame">
+    <div style="margin: 20px">
+        <label>Select a file </label>:
+        <input id="file" type="file" accept=".js"/><br><br>
+        <button id="submitbutton" >submit file</button>
+    </div><br>
+    <div  style="margin: 20px">
+        <label>Or Drop a file below in below box</label><br>
+        <div class="drop-box" id="dropFile"></div>
+    </div>
+</div>
+<div class="col-6 frame">
+    <!--<a href="./partials/demo.html" target="iframe_a">W3Schools.com</a>-->
+    <iframe style="margin: 0" height="430px" width="100%" src="" name="iframe_a"></iframe>
+</div>
+
+<div id="messages">
+    <p>Status Messages</p>
+</div>
+
+<footer class="footer">Solver</footer>
+</body>
+</html>
+
+
+html, body{
+margin: 0;
+font-size: 18px;
+}
+
+*{
+box-sizing: border-box;
+}
+
+.footer {
+background: beige;
+width : 100%;
+height: 60px;
+position: absolute;
+margin-top:538px;
+font: italic bold 40px serif;
+text-align: center;
+text-decoration: underline;
+letter-spacing: 3px;
+text-shadow: 1px 1px black;
+}
+
+/*.drop-box{
+float: left;
+width: 50%;
+height: 50px;
+margin: 10px;
+border: 1px solid black;
+cursor: default;
+}*/
+
+#dropFile
+{
+display: none;
+font-weight: bold;
+text-align: center;
+padding: 1em 0;
+margin: 1em 0;
+color: #555;
+border: 2px dashed #555;
+border-radius: 7px;
+cursor: default;
+}
+
+#dropFile.hover
+{
+color: #f00;
+border-color: #f00;
+border-style: solid;
+box-shadow: inset 0 3px 4px #888;
+}
+
+.frame{
+float: left;
+margin: 5px;
+padding: 10px;
+max-width: 45%;
+height: 450px;
+border: 1px solid black;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}

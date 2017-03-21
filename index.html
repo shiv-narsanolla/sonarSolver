@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html >
+    <head>
+        <title>My Application</title>
+        <link rel="stylesheet" href="./css/sonarStyle.css">
+        <script type="text/javascript" src="./scripts/sonar.js"></script>
+    </head>
+    <body>
+    <header>
+        <img src="./lib/images/sonar-banner.jpg" alt="Smiley face" width="100%" height="60">
+    </header>
+
+    <div class="col-6 frame">
+        <div style="margin: 20px">
+            <label>Select a file </label>:
+            <input id="file" type="file" accept=".js" onchange="selectFile(event)"/><br><br>
+        </div>
+        <div  style="margin: 20px">
+            <label>Or Drop a file below in below box</label><br>
+            <div class="drop-box" id="dropFile" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+        <div class="clearFloat">
+            <input type="checkbox" id="newFileNeeded" />
+            <label for="newFileNeeded"> check this box if you need a download link</label>
+        </div><br>
+        <div class="col-6 clearFloat">
+            <button class="submit" onclick="displayContent();">Display Content</button>
+        </div>
+        <a  href="javascript:void(0)" download="" style="display: none; position: absolute; margin-top: -25px" id="downloadLink">Download Code</a>
+    </div>
+    <div class="col-6 frame">
+        <!--<a href="./partials/demo.html" target="iframe_a">W3Schools.com</a>-->
+        <!--<iframe style="margin: 0" height="430px" width="100%" src="./partials/demo.html" name="iframe_a"></iframe>-->
+        <div id="message"></div>
+    </div>
+    <footer class="footer">Issue Solver</footer>
+    </body>
+</html>

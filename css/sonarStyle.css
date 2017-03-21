@@ -1,0 +1,86 @@
+html, body{
+    margin: 0;
+    font-size: 18px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.footer {
+    float : left;
+    background: beige;
+    width : 100%;
+    height: 57px;
+    font: italic bold 40px serif;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px black;
+    margin-top: 80px;
+}
+
+.drop-box{
+    float: left;
+    width: 50%;
+    height: 50px;
+    margin: 10px;
+    border: 2px dashed grey;
+    border-radius: 5px;
+    cursor: default;
+}
+
+.frame{
+    float: left;
+    margin: 5px;
+    padding: 10px;
+    max-width: 45%;
+    height: 450px;
+    border: 1px solid black;
+    overflow: scroll;
+}
+
+.clearFloat{
+    clear: left;
+}
+
+.submit{
+    position: absolute;
+    width: 20%;
+    left : 10%;
+    border-radius: 8px;
+    border: 3px outset aqua;
+    background: cyan;
+    height : 42px;
+    font: bold 16px oldstyle-nums;
+}
+
+.submit:active{
+    border: 3px inset aqua;
+    outline: none;
+}
+
+.submit:focus{
+    outline: none
+}
+
+#message > span{
+    font-size: 16px;
+}
+
+#message > pre{
+    font-size: 14px;
+    padding: 10px;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
